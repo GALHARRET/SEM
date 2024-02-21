@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cariou V. &amp; Galharret J.-M.">
+
+<title>Formation SEM - Equations structurelles et leurs applications</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Formation SEM</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page">
+ <span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./analyse_cov.html">
+ <span class="menu-text">Analyse de covariance</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#les-sem-structural-equation-modeling" id="toc-les-sem-structural-equation-modeling" class="nav-link" data-scroll-target="#les-sem-structural-equation-modeling">Les SEM (Structural Equation Modeling)</a>
+  <ul class="collapse">
+  <li><a href="#exemple" id="toc-exemple" class="nav-link" data-scroll-target="#exemple">Exemple :</a></li>
+  <li><a href="#représentation-graphique-de-la-modélisation" id="toc-représentation-graphique-de-la-modélisation" class="nav-link" data-scroll-target="#représentation-graphique-de-la-modélisation">Représentation graphique de la modélisation</a></li>
+  <li><a href="#modèle-structurel" id="toc-modèle-structurel" class="nav-link" data-scroll-target="#modèle-structurel">Modèle structurel</a></li>
+  <li><a href="#modèle-de-mesure" id="toc-modèle-de-mesure" class="nav-link" data-scroll-target="#modèle-de-mesure">Modèle de mesure</a></li>
+  <li><a href="#notations-usuelles" id="toc-notations-usuelles" class="nav-link" data-scroll-target="#notations-usuelles">Notations usuelles</a></li>
+  </ul></li>
+  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie">Bibliographie :</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Equations structurelles et leurs applications</h1>
+<p class="subtitle lead">Formation pré-congrès Chimiométrie 2024</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cariou V. &amp; Galharret J.-M. </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>La modélisation en équations structurelles est d’un certain point de vue une généralisation des modèles de régressions linéaires à des systèmes complexes. Il s’agit en effet d’étudier les relations entre plusieurs blocs de données appariés sur les individus qui sont décrits par un ensemble de variables observées différant suivant les blocs. Dans ces modèles, une variable non observée est associée à chacun des blocs et on s’intéresse à l’ensemble des équations de régression liant ces variables entre-elles. L’estimation des coefficients de ces modèles peut être réalisée à partir de l’analyse des covariances (Jöreskog 1970 LISREL) ou bien l’approche PLS (Wold 1982).</p>
+<ul>
+<li><p>L’analyse des covariances est l’approche qui reste la plus utilisée dans les domaines des sciences humaines et sociales. C’est aussi celle qui admet les fondements les plus aboutis en termes de validation statistique.</p></li>
+<li><p>L’approche PLS, aussi appelée PLS-PM ou plus récemment PLS-SEM, s’avère quant à elle souvent plébiscitée par sa capacité à associer à chaque bloc une composante (comme en ACP), matérialisant ainsi les variables non observées. Après avoir réalisé une brève introduction mathématique de cette modélisation dans le cadre des modèles à variables latentes, nous illustrerons l’approche par analyse de covariance en psychologie. Dans un second temps, nous présenterons l’alternative avec PLS-SEM en l’illustrant sur des exemples issus de sensométrie et de chimiométrie. Puis nous conclurons sur l’apport de PLS-SEM pour les modèles composites (Dijkstra, 2015 ; Henseler et al., 2014).</p></li>
+</ul>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>La régression multiple, l’ANOVA sont des méthodes statistiques très utilisées qui permettent de tester empiriquement des relations (linéaires) entre des variables d’intérêts et une variable réponse.</p>
+<p>Elles sont cependant limitées :</p>
+<ol type="1">
+<li>On ne peut pas tester des modèles (pourtant simple) du type</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sous forme d’équations :</p>
+<p><span class="math display">\[
+\begin{cases}
+X_2= aX_1+\zeta_2 \\
+X_3= bX_2+\zeta_3
+\end{cases}
+\]</span></p>
+<ol start="2" type="1">
+<li>Toutes les variables explicatives sont mesurées sans erreur</li>
+</ol>
+</section>
+<section id="les-sem-structural-equation-modeling" class="level1">
+<h1>Les SEM (Structural Equation Modeling)</h1>
+<p>La modélisation en équations structurelles est un ensemble de modèles qui permettent de modéliser des relations linéaires entre des variables latentes (ou non observées) ou entre des variables regroupées sous forme de scores composites.</p>
+<section id="exemple" class="level2">
+<h2 class="anchored" data-anchor-id="exemple">Exemple :</h2>
+<p>Cette étude nous servira par la suite dans la partie application sur R.</p>
+<p>Il s’agit d’une étude réalisée à Nantes en 2017 en partenariat avec la DEPP (Direction de l’évaluation, de la prospective et de la performance) sous la direction du ministère de l’éducation nationale. <a href="https://cren.univ-nantes.fr/contrats-de-recherche/be-scol" class="uri">https://cren.univ-nantes.fr/contrats-de-recherche/be-scol</a></p>
+<p>L’un des objectifs de cette étude est de comprendre quelles variables psychologiques permettent de prédire les performances académiques (math et français).</p>
+<p>Les variables envisagées sont :</p>
+<ul>
+<li><p>La satisfaction vis à vis de la relation à l’enseignant (RE) mesurée par 5 items (ex : Certains enfants trouvent que leur maître/maîtresse/professeur(s) les aide(nt) suffisamment)</p></li>
+<li><p>Sentiment d’efficacité personnelle mesuré par 4 items.</p></li>
+</ul>
+</section>
+<section id="représentation-graphique-de-la-modélisation" class="level2">
+<h2 class="anchored" data-anchor-id="représentation-graphique-de-la-modélisation">Représentation graphique de la modélisation</h2>
+<p>L’un des points forts de la modélisation en équations structurelles est qu’il existe un diagramme qui permet de représenter cette modélisation et réciproquement.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Dans la modélisation, on distingue donc deux parties :</p>
+<ul>
+<li><p>Le modèle structurel : on modélise les liens existants entre les différentes variables latentes. Lorsque il n’y a de variable latente dans le modèle le modèle structurel est un modèle <strong>path analysis</strong> (PA model).</p></li>
+<li><p>Le modèle de mesure : on regarde la cohérence de l’outil de mesure (ici les items) par rapport au concept qu’ils doivent mesurer. Par exemple les 5 items utilisés pour la relation à l’enseignant sont-ils cohérents et représentent-ils un même concept ?</p></li>
+</ul>
+</section>
+<section id="modèle-structurel" class="level2">
+<h2 class="anchored" data-anchor-id="modèle-structurel">Modèle structurel</h2>
+<p>Les trois variables <span class="math inline">\(R.Ens\)</span>, <span class="math inline">\(SEP\)</span> et <span class="math inline">\(Math\)</span> sont des variables latentes.</p>
+<p>Dans le modèle “théorique” (c’est à dire pour nous le <strong><em>modèle structurel</em></strong>) on envisage qu’une bonne statisfaction par rapport à la relation à l’enseignant (<strong><em>variable exogène</em></strong>) induit un meilleur sentiment d’efficacité personnel qui à son tour induit de meilleures performances en mathématique (<strong><em>variables endogènes</em></strong>).</p>
+<p>Remarque : ce modèle est appelé modèle de médiation <span class="math inline">\(RE\)</span> variable d’exposition, <span class="math inline">\(SEP\)</span> varioable médiatrice et <span class="math inline">\(Math\)</span> variable réponse.</p>
+</section>
+<section id="modèle-de-mesure" class="level2">
+<h2 class="anchored" data-anchor-id="modèle-de-mesure">Modèle de mesure</h2>
+<p>Le modèle de mesure va également être testé dans la SEM. Ici il s’agit d’un modèle dit <strong>réflexif</strong>.</p>
+<ul>
+<li>Modèle <strong>réflexif</strong> : La variable latente prédit la covariance entre les items (à une erreur prêt).</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Les variables observées sont écrites en fonction de la variable latente <span class="math display">\[x_i=\lambda_{1i}\xi_1+\theta_i,\]</span> où <span class="math inline">\(\lambda_{1i}\)</span> sont appelés loadings.</p>
+<ul>
+<li>Modèle <strong>formatif</strong> : La variabilité de la variable latente est prédite par les variations des items qui la mesure.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ici le lien s’écrit <span class="math display">\[\xi_1=\sum_{i=1}^{k}\lambda_{1i}x_i+\zeta,\]</span> où <span class="math inline">\(\lambda_{1i}\)</span> sont appelés loadings.</p>
+</section>
+<section id="notations-usuelles" class="level2">
+<h2 class="anchored" data-anchor-id="notations-usuelles">Notations usuelles</h2>
+<p>On note <span class="math inline">\(x_1,...,x_p,y_1,...,y_q\)</span> les variables observées.</p>
+<ul>
+<li>Modèle de mesure :</li>
+</ul>
+<p><span class="math display">\[\bf{y}=\Lambda_y\eta+\varepsilon, \quad \bf{x}=\Lambda_x\xi+\delta.\]</span></p>
+<ul>
+<li>Modèle structurel :</li>
+</ul>
+<p><span class="math display">\[\eta=\bf{B}\eta+\Gamma\xi+\zeta.\]</span></p>
+</section>
+</section>
+<section id="bibliographie" class="level1">
+<h1>Bibliographie :</h1>
+<ul>
+<li><p>Joreskog, K. G. (1970). Estimation and testing of simplex models. British Journal of Mathematical and Statistical Psychology, 23(2), 121–145. <a href="https://doi.org/10.1111/j.2044-8317.1970.tb00439.x" class="uri">https://doi.org/10.1111/j.2044-8317.1970.tb00439.x</a></p></li>
+<li><p>Wold, H. (1982) Model Construction and Evaluation When Theoretical Knowledge Is Scarce: An Example of the Use of Partial Least Squares. Cahier du Département d’économétrie, Faculté des Sciences Economiques et Sociales, 06, 79, 1982.</p></li>
+<li><p>Joreskog, K.G. and Wold, H. (1982) The ML and PLS Techniques for Modeling with Latent Variables: Historical and Comparative Aspects. In: Joreskog, K.G. and Wold, H., Eds., Systems under Indirect Observation: Causality, Structure, Prediction, Part I, Elsevier, Amsterdam, 263-270.</p></li>
+<li><p>Dijkstra, Theo K., and Jörg Henseler. (2015) Consistent Partial Least Squares Path Modeling. MIS Quarterly, vol.&nbsp;39, no. 2, pp.&nbsp;297–316. JSTOR, <a href="https://www.jstor.org/stable/26628355" class="uri">https://www.jstor.org/stable/26628355</a>.</p></li>
+<li><p>Henseler, J., Ringle, C.M. &amp; Sarstedt, M. (2015) A new criterion for assessing discriminant validity in variance-based structural equation modeling. J. of the Acad. Mark. Sci. 43, 115–135. <a href="https://doi.org/10.1007/s11747-014-0403-8" class="uri">https://doi.org/10.1007/s11747-014-0403-8</a></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
