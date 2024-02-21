@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Formation SEM – lavaan_example</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Formation SEM</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./analyse_cov.html" rel="" target="">
+ <span class="menu-text">Analyse de covariance</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#jeu-de-données-exemple" id="toc-jeu-de-données-exemple" class="nav-link active" data-scroll-target="#jeu-de-données-exemple">Jeu de données exemple</a></li>
+  <li><a href="#modèle-sur-variables-observées" id="toc-modèle-sur-variables-observées" class="nav-link" data-scroll-target="#modèle-sur-variables-observées">Modèle sur variables observées</a></li>
+  <li><a href="#modèle-à-variables-latentes" id="toc-modèle-à-variables-latentes" class="nav-link" data-scroll-target="#modèle-à-variables-latentes">Modèle à variables latentes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidySEM)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="jeu-de-données-exemple" class="level1">
+<h1>Jeu de données exemple</h1>
+<ul>
+<li><p>Sentiment de sécurité mesurée par 5 items (ex : Certains enfants ont peur de se faire voler des affaires à l’école/au collège)</p></li>
+<li><p>Rapport aux évaluations mesurée par 5 items,</p></li>
+<li><p>Satisfaction classe mesurée par 5 items,</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">exemple d’items</figcaption>
+</figure>
+</div>
+</section>
+<section id="modèle-sur-variables-observées" class="level1">
+<h1>Modèle sur variables observées</h1>
+<p>Les données sont <a href="data_agreg.csv">ici</a></p>
+<p>On a calculé les moyennes des items pour chaque variable impliquée dans le modèle ci-dessous.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="lavaan_example_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>On peut commencer par regarder la matrice de corrélations des variables impliquées dans le modèle :</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"data_agreg.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">na.omit</span>(df[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">RE</th>
+<th style="text-align: right;">Sec</th>
+<th style="text-align: right;">Eval</th>
+<th style="text-align: right;">Cl</th>
+<th style="text-align: right;">Math</th>
+<th style="text-align: right;">SEP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">3.75</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5.285714</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4.857143</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.8</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5.142857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5.428571</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5.571429</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(<span class="fu">cor</span>(df[,<span class="fu">c</span>(<span class="st">"Math"</span>,<span class="st">"SEP"</span>,<span class="st">"RE"</span>,<span class="st">"Sec"</span>,<span class="st">"Eval"</span>,<span class="st">"Cl"</span>)]),<span class="at">type=</span><span class="st">"upper"</span>, <span class="at">method=</span><span class="st">"number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="lavaan_example_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="st">'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">SEP~ a*RE</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">Math~ c*RE + b*SEP+Eval</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">RE~Sec+Cl</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">Eval~~Sec</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">Eval~~Cl</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">Cl~~Sec</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">I:=a*b</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">T:=a*b+c</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model,<span class="at">data=</span>df,<span class="at">fixed.x=</span><span class="cn">FALSE</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit,<span class="at">standardized=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6.16 ended normally after 19 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        15
+
+  Number of observations                           288
+
+Model Test User Model:
+                                                      
+  Test statistic                                46.890
+  Degrees of freedom                                 6
+  P-value (Chi-square)                           0.000
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  SEP ~                                                                 
+    RE         (a)    0.709    0.074    9.649    0.000    0.709    0.494
+  Math ~                                                                
+    RE         (c)    0.060    0.119    0.503    0.615    0.060    0.032
+    SEP        (b)    0.442    0.082    5.372    0.000    0.442    0.336
+    Eval              0.255    0.098    2.614    0.009    0.255    0.143
+  RE ~                                                                  
+    Sec               0.179    0.054    3.328    0.001    0.179    0.169
+    Cl                0.455    0.049    9.336    0.000    0.455    0.474
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Eval ~~                                                               
+    Sec               0.214    0.028    7.712    0.000    0.214    0.510
+    Cl                0.018    0.027    0.669    0.504    0.018    0.039
+  Sec ~~                                                                
+    Cl                0.016    0.024    0.657    0.511    0.016    0.039
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .SEP               0.652    0.054   12.000    0.000    0.652    0.756
+   .Math              1.270    0.106   12.000    0.000    1.270    0.850
+   .RE                0.310    0.026   12.000    0.000    0.310    0.741
+    Eval              0.469    0.039   12.000    0.000    0.469    1.000
+    Sec               0.374    0.031   12.000    0.000    0.374    1.000
+    Cl                0.455    0.038   12.000    0.000    0.455    1.000
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+    I                 0.313    0.067    4.693    0.000    0.313    0.166
+    T                 0.373    0.108    3.449    0.001    0.373    0.197</code></pre>
+</div>
+</div>
+</section>
+<section id="modèle-à-variables-latentes" class="level1">
+<h1>Modèle à variables latentes</h1>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"data.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="st">'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">SEP=~SEP1+SEP2+SEP3+SEP4+SEP5</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">RE=~RE1+RE2+RE3+RE4+RE5</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">Eval=~Eval1+Eval2+Eval3+Eval4+Eval5</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">Cl=~Cl1+Cl2+Cl3+Cl4</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">Sec=~Sec1+Sec2+Sec3+Sec4+Sec5</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">SEP~ a*RE</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">Math~ c*RE + b*SEP+Eval</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">RE~Sec+Cl</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">Eval~~Sec</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">Eval~~Cl</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="st">Cl~~Sec</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">I:=a*b</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="st">T:=a*b+c</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model,<span class="at">data=</span>df,<span class="at">fixed.x=</span><span class="cn">FALSE</span>,<span class="at">estimator=</span><span class="st">"MLR"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit,<span class="at">standardized=</span>T,<span class="at">fit.measures=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6.16 ended normally after 45 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        58
+
+                                                  Used       Total
+  Number of observations                           289         295
+
+Model Test User Model:
+                                              Standard      Scaled
+  Test Statistic                               757.307     699.438
+  Degrees of freedom                               267         267
+  P-value (Chi-square)                           0.000       0.000
+  Scaling correction factor                                  1.083
+    Yuan-Bentler correction (Mplus variant)                       
+
+Model Test Baseline Model:
+
+  Test statistic                              2440.553    2165.899
+  Degrees of freedom                               300         300
+  P-value                                        0.000       0.000
+  Scaling correction factor                                  1.127
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.771       0.768
+  Tucker-Lewis Index (TLI)                       0.743       0.740
+                                                                  
+  Robust Comparative Fit Index (CFI)                         0.777
+  Robust Tucker-Lewis Index (TLI)                            0.750
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -9412.915   -9412.915
+  Scaling correction factor                                  1.226
+      for the MLR correction                                      
+  Loglikelihood unrestricted model (H1)      -9034.262   -9034.262
+  Scaling correction factor                                  1.108
+      for the MLR correction                                      
+                                                                  
+  Akaike (AIC)                               18941.830   18941.830
+  Bayesian (BIC)                             19154.483   19154.483
+  Sample-size adjusted Bayesian (SABIC)      18970.556   18970.556
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.080       0.075
+  90 Percent confidence interval - lower         0.073       0.068
+  90 Percent confidence interval - upper         0.086       0.081
+  P-value H_0: RMSEA &lt;= 0.050                    0.000       0.000
+  P-value H_0: RMSEA &gt;= 0.080                    0.479       0.099
+                                                                  
+  Robust RMSEA                                               0.078
+  90 Percent confidence interval - lower                     0.071
+  90 Percent confidence interval - upper                     0.085
+  P-value H_0: Robust RMSEA &lt;= 0.050                         0.000
+  P-value H_0: Robust RMSEA &gt;= 0.080                         0.318
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.096       0.096
+
+Parameter Estimates:
+
+  Standard errors                             Sandwich
+  Information bread                           Observed
+  Observed information based on                Hessian
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  SEP =~                                                                
+    SEP1              1.000                               0.543    0.546
+    SEP2              1.586    0.308    5.141    0.000    0.861    0.701
+    SEP3              1.902    0.342    5.563    0.000    1.033    0.767
+    SEP4              1.385    0.384    3.609    0.000    0.752    0.550
+    SEP5              1.711    0.362    4.724    0.000    0.929    0.660
+  RE =~                                                                 
+    RE1               1.000                               0.687    0.744
+    RE2               0.954    0.088   10.832    0.000    0.655    0.668
+    RE3               0.843    0.103    8.226    0.000    0.579    0.580
+    RE4               0.787    0.095    8.257    0.000    0.541    0.609
+    RE5               0.425    0.102    4.181    0.000    0.292    0.309
+  Eval =~                                                               
+    Eval1             1.000                               0.515    0.507
+    Eval2             0.963    0.168    5.742    0.000    0.495    0.540
+    Eval3             1.157    0.153    7.551    0.000    0.595    0.598
+    Eval4             1.171    0.176    6.639    0.000    0.603    0.565
+    Eval5             1.352    0.172    7.859    0.000    0.696    0.694
+  Cl =~                                                                 
+    Cl1               1.000                               0.749    0.771
+    Cl2               1.125    0.074   15.221    0.000    0.843    0.855
+    Cl3               0.549    0.106    5.200    0.000    0.411    0.490
+    Cl4               0.401    0.110    3.646    0.000    0.301    0.328
+  Sec =~                                                                
+    Sec1              1.000                               0.551    0.538
+    Sec2              0.592    0.107    5.556    0.000    0.326    0.481
+    Sec3              0.879    0.124    7.066    0.000    0.484    0.610
+    Sec4              1.108    0.156    7.092    0.000    0.610    0.667
+    Sec5              1.199    0.151    7.929    0.000    0.660    0.716
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  SEP ~                                                                 
+    RE         (a)    0.514    0.085    6.052    0.000    0.651    0.651
+  Math ~                                                                
+    RE         (c)   -0.064    0.215   -0.299    0.765   -0.044   -0.036
+    SEP        (b)    0.727    0.300    2.421    0.015    0.395    0.321
+    Eval              0.576    0.210    2.741    0.006    0.296    0.241
+  RE ~                                                                  
+    Sec               0.364    0.117    3.110    0.002    0.292    0.292
+    Cl                0.405    0.103    3.929    0.000    0.442    0.442
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Eval ~~                                                               
+    Sec               0.203    0.036    5.599    0.000    0.717    0.717
+    Cl                0.011    0.035    0.322    0.747    0.029    0.029
+  Cl ~~                                                                 
+    Sec               0.034    0.032    1.074    0.283    0.082    0.082
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .SEP1              0.694    0.082    8.507    0.000    0.694    0.702
+   .SEP2              0.768    0.198    3.884    0.000    0.768    0.509
+   .SEP3              0.747    0.242    3.090    0.002    0.747    0.412
+   .SEP4              1.301    0.269    4.829    0.000    1.301    0.697
+   .SEP5              1.115    0.260    4.284    0.000    1.115    0.564
+   .RE1               0.380    0.046    8.174    0.000    0.380    0.446
+   .RE2               0.532    0.058    9.244    0.000    0.532    0.554
+   .RE3               0.661    0.073    8.999    0.000    0.661    0.663
+   .RE4               0.495    0.057    8.624    0.000    0.495    0.629
+   .RE5               0.808    0.059   13.744    0.000    0.808    0.905
+   .Eval1             0.764    0.069   11.139    0.000    0.764    0.743
+   .Eval2             0.596    0.065    9.130    0.000    0.596    0.708
+   .Eval3             0.637    0.061   10.425    0.000    0.637    0.643
+   .Eval4             0.773    0.077   10.013    0.000    0.773    0.680
+   .Eval5             0.522    0.058    9.071    0.000    0.522    0.519
+   .Cl1               0.383    0.060    6.378    0.000    0.383    0.405
+   .Cl2               0.262    0.085    3.098    0.002    0.262    0.269
+   .Cl3               0.537    0.054   10.018    0.000    0.537    0.760
+   .Cl4               0.752    0.064   11.834    0.000    0.752    0.893
+   .Sec1              0.746    0.066   11.227    0.000    0.746    0.711
+   .Sec2              0.353    0.056    6.295    0.000    0.353    0.769
+   .Sec3              0.396    0.056    7.053    0.000    0.396    0.628
+   .Sec4              0.465    0.066    7.065    0.000    0.465    0.555
+   .Sec5              0.415    0.058    7.196    0.000    0.415    0.488
+   .Math              1.258    0.124   10.105    0.000    1.258    0.834
+   .SEP               0.170    0.048    3.554    0.000    0.577    0.577
+   .RE                0.329    0.060    5.494    0.000    0.698    0.698
+    Eval              0.265    0.060    4.441    0.000    1.000    1.000
+    Cl                0.562    0.075    7.456    0.000    1.000    1.000
+    Sec               0.303    0.066    4.584    0.000    1.000    1.000
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+    I                 0.374    0.172    2.170    0.030    0.257    0.209
+    T                 0.310    0.135    2.293    0.022    0.213    0.173</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

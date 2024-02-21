@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "analyse_cov.html",
+    "href": "analyse_cov.html",
+    "title": "Formation SEM",
+    "section": "",
+    "text": "Code\nlibrary(lavaan)\nlibrary(tidySEM)\nlibrary(readxl)\nlibrary(knitr)\nOn va se placer dans un cadre plus simple Path-Analysis c’est à dire avec uniquement des variables observées. Toutes les notions et formulent se généralisent sans difficulté aux SEM intégrant un modèle un mesure."
+  },
+  {
+    "objectID": "diaporama.html",
+    "href": "diaporama.html",
+    "title": "Quelques précisions mathématiques",
+    "section": "",
+    "text": "\\(\\xi_1\\) : variable exogène (variable d’exposition)\n\\(\\eta_1\\) : variable endogène (variable médiatrice)\n\\(\\eta_2\\) : variable endogène (variable réponse)"
+  },
+  {
+    "objectID": "diaporama.html#hypothèses-principales",
+    "href": "diaporama.html#hypothèses-principales",
+    "title": "Quelques précisions mathématiques",
+    "section": "Hypothèses principales :",
+    "text": "Hypothèses principales :\n\nLes erreurs \\(\\zeta\\) et les variables exogènes \\(\\xi\\) ne sont pas corrélées\n\n\\[\n\\zeta.\\xi^T=0\n\\]\n\nLes erreurs \\(\\zeta\\) ne sont pas corrélées\n\n\\[\n\\mathbb E (\\zeta.\\zeta^T)=0\n\\]"
+  },
+  {
+    "objectID": "diaporama.html#hypothèses-additionnelles",
+    "href": "diaporama.html#hypothèses-additionnelles",
+    "title": "Quelques précisions mathématiques",
+    "section": "Hypothèses additionnelles",
+    "text": "Hypothèses additionnelles\nLes variables endogènes et exogènes sont standardisées\n\\[\n\\mathbb E(\\eta_j)=\\mathbb E(\\xi_k)=0, \\ \\mathbb V(\\eta_j)=\\mathbb V(\\xi_k)=0\n\\]"
+  },
+  {
+    "objectID": "diaporama.html#position-du-problème",
+    "href": "diaporama.html#position-du-problème",
+    "title": "Quelques précisions mathématiques",
+    "section": "Position du problème",
+    "text": "Position du problème\n\nOn veut savoir si le modèle envisagé rend bien compte des relations entre les variables au niveau de la population c’est à dire que l’on veut tester \\(H_0:\\mathcal R(\\theta)=\\mathcal R\\).\nOn peut évaluer \\(\\mathcal R(\\widehat \\theta)- R\\) où \\(\\theta\\) est estimé par l’une des méthodes précédentes."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n\nCode\n1 + 1\n\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Equations structurelles et leurs applications",
+    "section": "",
+    "text": "La modélisation en équations structurelles est d’un certain point de vue une généralisation des modèles de régressions linéaires à des systèmes complexes. Il s’agit en effet d’étudier les relations entre plusieurs blocs de données appariés sur les individus qui sont décrits par un ensemble de variables observées différant suivant les blocs. Dans ces modèles, une variable non observée est associée à chacun des blocs et on s’intéresse à l’ensemble des équations de régression liant ces variables entre-elles. L’estimation des coefficients de ces modèles peut être réalisée à partir de l’analyse des covariances (Jöreskog 1970 LISREL) ou bien l’approche PLS (Wold 1982)."
+  },
+  {
+    "objectID": "index.html#exemple",
+    "href": "index.html#exemple",
+    "title": "Equations structurelles et leurs applications",
+    "section": "Exemple :",
+    "text": "Exemple :\nCette étude nous servira par la suite dans la partie application sur R.\nIl s’agit d’une étude réalisée à Nantes en 2017 en partenariat avec la DEPP (Direction de l’évaluation, de la prospective et de la performance) sous la direction du ministère de l’éducation nationale. https://cren.univ-nantes.fr/contrats-de-recherche/be-scol\nL’un des objectifs de cette étude est de comprendre quelles variables psychologiques permettent de prédire les performances académiques (math et français).\nLes variables envisagées sont :\n\nLa satisfaction vis à vis de la relation à l’enseignant (RE) mesurée par 5 items (ex : Certains enfants trouvent que leur maître/maîtresse/professeur(s) les aide(nt) suffisamment)\nSentiment d’efficacité personnelle mesuré par 4 items."
+  },
+  {
+    "objectID": "index.html#représentation-graphique-de-la-modélisation",
+    "href": "index.html#représentation-graphique-de-la-modélisation",
+    "title": "Equations structurelles et leurs applications",
+    "section": "Représentation graphique de la modélisation",
+    "text": "Représentation graphique de la modélisation\nL’un des points forts de la modélisation en équations structurelles est qu’il existe un diagramme qui permet de représenter cette modélisation et réciproquement.\n\n\n\n\n\nDans la modélisation, on distingue donc deux parties :\n\nLe modèle structurel : on modélise les liens existants entre les différentes variables latentes. Lorsque il n’y a de variable latente dans le modèle le modèle structurel est un modèle path analysis (PA model).\nLe modèle de mesure : on regarde la cohérence de l’outil de mesure (ici les items) par rapport au concept qu’ils doivent mesurer. Par exemple les 5 items utilisés pour la relation à l’enseignant sont-ils cohérents et représentent-ils un même concept ?"
+  },
+  {
+    "objectID": "index.html#modèle-structurel",
+    "href": "index.html#modèle-structurel",
+    "title": "Equations structurelles et leurs applications",
+    "section": "Modèle structurel",
+    "text": "Modèle structurel\nLes trois variables \\(R.Ens\\), \\(SEP\\) et \\(Math\\) sont des variables latentes.\nDans le modèle “théorique” (c’est à dire pour nous le modèle structurel) on envisage qu’une bonne statisfaction par rapport à la relation à l’enseignant (variable exogène) induit un meilleur sentiment d’efficacité personnel qui à son tour induit de meilleures performances en mathématique (variables endogènes).\nRemarque : ce modèle est appelé modèle de médiation \\(RE\\) variable d’exposition, \\(SEP\\) varioable médiatrice et \\(Math\\) variable réponse."
+  },
+  {
+    "objectID": "index.html#modèle-de-mesure",
+    "href": "index.html#modèle-de-mesure",
+    "title": "Equations structurelles et leurs applications",
+    "section": "Modèle de mesure",
+    "text": "Modèle de mesure\nLe modèle de mesure va également être testé dans la SEM. Ici il s’agit d’un modèle dit réflexif.\n\nModèle réflexif : La variable latente prédit la covariance entre les items (à une erreur prêt).\n\n\n\n\n\n\n\n\n\n\nLes variables observées sont écrites en fonction de la variable latente \\[x_i=\\lambda_{1i}\\xi_1+\\theta_i,\\] où \\(\\lambda_{1i}\\) sont appelés loadings.\n\nModèle formatif : La variabilité de la variable latente est prédite par les variations des items qui la mesure.\n\n\n\n\n\n\n\n\n\n\nIci le lien s’écrit \\[\\xi_1=\\sum_{i=1}^{k}\\lambda_{1i}x_i+\\zeta,\\] où \\(\\lambda_{1i}\\) sont appelés loadings."
+  },
+  {
+    "objectID": "index.html#notations-usuelles",
+    "href": "index.html#notations-usuelles",
+    "title": "Equations structurelles et leurs applications",
+    "section": "Notations usuelles",
+    "text": "Notations usuelles\nOn note \\(x_1,...,x_p,y_1,...,y_q\\) les variables observées.\n\nModèle de mesure :\n\n\\[\\bf{y}=\\Lambda_y\\eta+\\varepsilon, \\quad \\bf{x}=\\Lambda_x\\xi+\\delta.\\]\n\nModèle structurel :\n\n\\[\\eta=\\bf{B}\\eta+\\Gamma\\xi+\\zeta.\\]"
+  },
+  {
+    "objectID": "analyse_cov.html#hypothèses-principales",
+    "href": "analyse_cov.html#hypothèses-principales",
+    "title": "Formation SEM",
+    "section": "Hypothèses principales :",
+    "text": "Hypothèses principales :\n\nLes erreurs \\(\\zeta\\) et les variables exogènes \\(\\xi\\) ne sont pas corrélées\n\n\\[\n\\zeta.\\xi^T=0\n\\]\n\nLes erreurs \\(\\zeta\\) ne sont pas corrélées\n\n\\[\n\\mathbb E (\\zeta.\\zeta^T)=0\n\\]"
+  },
+  {
+    "objectID": "analyse_cov.html#hypothèses-additionnelles",
+    "href": "analyse_cov.html#hypothèses-additionnelles",
+    "title": "Formation SEM",
+    "section": "Hypothèses additionnelles",
+    "text": "Hypothèses additionnelles\nLes variables endogènes et exogènes sont standardisées\n\\[\n\\mathbb E(\\eta_j)=\\mathbb E(\\xi_k)=0, \\ \\mathbb V(\\eta_j)=\\mathbb V(\\xi_k)=0\n\\]"
+  },
+  {
+    "objectID": "analyse_cov.html#position-du-problème",
+    "href": "analyse_cov.html#position-du-problème",
+    "title": "Le modèle de médiation",
+    "section": "Position du problème",
+    "text": "Position du problème\n\nOn veut savoir si le modèle envisagé rend bien compte des relations entre les variables au niveau de la population c’est à dire que l’on veut tester \\(H_0:\\mathcal R(\\theta)=\\mathcal R\\).\nOn peut évaluer \\(\\mathcal R(\\widehat \\theta)- R\\) où \\(\\theta\\) est estimé par l’une des méthodes précédentes.\n\nVous pouvez télécharger le pdf\n\n\n\n\nThis browser does not support PDFs. Please download the PDF to view it: Download PDF."
+  },
+  {
+    "objectID": "lavaan_example.html",
+    "href": "lavaan_example.html",
+    "title": "Jeu de données exemple",
+    "section": "",
+    "text": "Code\nlibrary(lavaan)\nlibrary(tidySEM)\nlibrary(readxl)\nlibrary(knitr)\n\n\n\nJeu de données exemple\n\nSentiment de sécurité mesurée par 5 items (ex : Certains enfants ont peur de se faire voler des affaires à l’école/au collège)\nRapport aux évaluations mesurée par 5 items,\nSatisfaction classe mesurée par 5 items,\n\n\n\n\nexemple d’items\n\n\n\n\nModèle sur variables observées\nLes données sont ici\nOn a calculé les moyennes des items pour chaque variable impliquée dans le modèle ci-dessous.\n\n\n\n\n\nOn peut commencer par regarder la matrice de corrélations des variables impliquées dans le modèle :\n\n\nCode\ndf=read.csv(\"data_agreg.csv\")\ndf&lt;-na.omit(df[,-1])\nlibrary(psych)\nkable(head(df))\n\n\n\n\n\nRE\nSec\nEval\nCl\nMath\nSEP\n\n\n\n\n3.2\n3.0\n2.6\n3.75\n5\n5.285714\n\n\n2.8\n2.4\n2.8\n3.50\n5\n5.000000\n\n\n3.0\n3.4\n2.2\n4.00\n5\n4.857143\n\n\n2.8\n3.0\n1.8\n3.50\n4\n5.142857\n\n\n3.8\n3.4\n2.0\n3.00\n5\n5.428571\n\n\n3.4\n2.0\n1.4\n3.50\n1\n5.571429\n\n\n\n\n\nCode\ncorrplot::corrplot(cor(df[,c(\"Math\",\"SEP\",\"RE\",\"Sec\",\"Eval\",\"Cl\")]),type=\"upper\", method=\"number\")\n\n\n\n\n\n\n\nCode\nmodel&lt;-'\nSEP~ a*RE\nMath~ c*RE + b*SEP+Eval\nRE~Sec+Cl\nEval~~Sec\nEval~~Cl\nCl~~Sec\nI:=a*b\nT:=a*b+c\n'\n\nfit&lt;-sem(model,data=df,fixed.x=FALSE)\n\nsummary(fit,standardized=T)\n\n\nlavaan 0.6.16 ended normally after 19 iterations\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                        15\n\n  Number of observations                           288\n\nModel Test User Model:\n                                                      \n  Test statistic                                46.890\n  Degrees of freedom                                 6\n  P-value (Chi-square)                           0.000\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Expected\n  Information saturated (h1) model          Structured\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n  SEP ~                                                                 \n    RE         (a)    0.709    0.074    9.649    0.000    0.709    0.494\n  Math ~                                                                \n    RE         (c)    0.060    0.119    0.503    0.615    0.060    0.032\n    SEP        (b)    0.442    0.082    5.372    0.000    0.442    0.336\n    Eval              0.255    0.098    2.614    0.009    0.255    0.143\n  RE ~                                                                  \n    Sec               0.179    0.054    3.328    0.001    0.179    0.169\n    Cl                0.455    0.049    9.336    0.000    0.455    0.474\n\nCovariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n  Eval ~~                                                               \n    Sec               0.214    0.028    7.712    0.000    0.214    0.510\n    Cl                0.018    0.027    0.669    0.504    0.018    0.039\n  Sec ~~                                                                \n    Cl                0.016    0.024    0.657    0.511    0.016    0.039\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n   .SEP               0.652    0.054   12.000    0.000    0.652    0.756\n   .Math              1.270    0.106   12.000    0.000    1.270    0.850\n   .RE                0.310    0.026   12.000    0.000    0.310    0.741\n    Eval              0.469    0.039   12.000    0.000    0.469    1.000\n    Sec               0.374    0.031   12.000    0.000    0.374    1.000\n    Cl                0.455    0.038   12.000    0.000    0.455    1.000\n\nDefined Parameters:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n    I                 0.313    0.067    4.693    0.000    0.313    0.166\n    T                 0.373    0.108    3.449    0.001    0.373    0.197\n\n\n\n\nModèle à variables latentes\n\n\nCode\ndf=read.csv(\"data.csv\")\n\nmodel&lt;-'\nSEP=~SEP1+SEP2+SEP3+SEP4+SEP5\nRE=~RE1+RE2+RE3+RE4+RE5\nEval=~Eval1+Eval2+Eval3+Eval4+Eval5\nCl=~Cl1+Cl2+Cl3+Cl4\nSec=~Sec1+Sec2+Sec3+Sec4+Sec5\nSEP~ a*RE\nMath~ c*RE + b*SEP+Eval\nRE~Sec+Cl\nEval~~Sec\nEval~~Cl\nCl~~Sec\nI:=a*b\nT:=a*b+c\n'\n\nfit&lt;-sem(model,data=df,fixed.x=FALSE,estimator=\"MLR\")\n\nsummary(fit,standardized=T,fit.measures=T)\n\n\nlavaan 0.6.16 ended normally after 45 iterations\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                        58\n\n                                                  Used       Total\n  Number of observations                           289         295\n\nModel Test User Model:\n                                              Standard      Scaled\n  Test Statistic                               757.307     699.438\n  Degrees of freedom                               267         267\n  P-value (Chi-square)                           0.000       0.000\n  Scaling correction factor                                  1.083\n    Yuan-Bentler correction (Mplus variant)                       \n\nModel Test Baseline Model:\n\n  Test statistic                              2440.553    2165.899\n  Degrees of freedom                               300         300\n  P-value                                        0.000       0.000\n  Scaling correction factor                                  1.127\n\nUser Model versus Baseline Model:\n\n  Comparative Fit Index (CFI)                    0.771       0.768\n  Tucker-Lewis Index (TLI)                       0.743       0.740\n                                                                  \n  Robust Comparative Fit Index (CFI)                         0.777\n  Robust Tucker-Lewis Index (TLI)                            0.750\n\nLoglikelihood and Information Criteria:\n\n  Loglikelihood user model (H0)              -9412.915   -9412.915\n  Scaling correction factor                                  1.226\n      for the MLR correction                                      \n  Loglikelihood unrestricted model (H1)      -9034.262   -9034.262\n  Scaling correction factor                                  1.108\n      for the MLR correction                                      \n                                                                  \n  Akaike (AIC)                               18941.830   18941.830\n  Bayesian (BIC)                             19154.483   19154.483\n  Sample-size adjusted Bayesian (SABIC)      18970.556   18970.556\n\nRoot Mean Square Error of Approximation:\n\n  RMSEA                                          0.080       0.075\n  90 Percent confidence interval - lower         0.073       0.068\n  90 Percent confidence interval - upper         0.086       0.081\n  P-value H_0: RMSEA &lt;= 0.050                    0.000       0.000\n  P-value H_0: RMSEA &gt;= 0.080                    0.479       0.099\n                                                                  \n  Robust RMSEA                                               0.078\n  90 Percent confidence interval - lower                     0.071\n  90 Percent confidence interval - upper                     0.085\n  P-value H_0: Robust RMSEA &lt;= 0.050                         0.000\n  P-value H_0: Robust RMSEA &gt;= 0.080                         0.318\n\nStandardized Root Mean Square Residual:\n\n  SRMR                                           0.096       0.096\n\nParameter Estimates:\n\n  Standard errors                             Sandwich\n  Information bread                           Observed\n  Observed information based on                Hessian\n\nLatent Variables:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n  SEP =~                                                                \n    SEP1              1.000                               0.543    0.546\n    SEP2              1.586    0.308    5.141    0.000    0.861    0.701\n    SEP3              1.902    0.342    5.563    0.000    1.033    0.767\n    SEP4              1.385    0.384    3.609    0.000    0.752    0.550\n    SEP5              1.711    0.362    4.724    0.000    0.929    0.660\n  RE =~                                                                 \n    RE1               1.000                               0.687    0.744\n    RE2               0.954    0.088   10.832    0.000    0.655    0.668\n    RE3               0.843    0.103    8.226    0.000    0.579    0.580\n    RE4               0.787    0.095    8.257    0.000    0.541    0.609\n    RE5               0.425    0.102    4.181    0.000    0.292    0.309\n  Eval =~                                                               \n    Eval1             1.000                               0.515    0.507\n    Eval2             0.963    0.168    5.742    0.000    0.495    0.540\n    Eval3             1.157    0.153    7.551    0.000    0.595    0.598\n    Eval4             1.171    0.176    6.639    0.000    0.603    0.565\n    Eval5             1.352    0.172    7.859    0.000    0.696    0.694\n  Cl =~                                                                 \n    Cl1               1.000                               0.749    0.771\n    Cl2               1.125    0.074   15.221    0.000    0.843    0.855\n    Cl3               0.549    0.106    5.200    0.000    0.411    0.490\n    Cl4               0.401    0.110    3.646    0.000    0.301    0.328\n  Sec =~                                                                \n    Sec1              1.000                               0.551    0.538\n    Sec2              0.592    0.107    5.556    0.000    0.326    0.481\n    Sec3              0.879    0.124    7.066    0.000    0.484    0.610\n    Sec4              1.108    0.156    7.092    0.000    0.610    0.667\n    Sec5              1.199    0.151    7.929    0.000    0.660    0.716\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n  SEP ~                                                                 \n    RE         (a)    0.514    0.085    6.052    0.000    0.651    0.651\n  Math ~                                                                \n    RE         (c)   -0.064    0.215   -0.299    0.765   -0.044   -0.036\n    SEP        (b)    0.727    0.300    2.421    0.015    0.395    0.321\n    Eval              0.576    0.210    2.741    0.006    0.296    0.241\n  RE ~                                                                  \n    Sec               0.364    0.117    3.110    0.002    0.292    0.292\n    Cl                0.405    0.103    3.929    0.000    0.442    0.442\n\nCovariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n  Eval ~~                                                               \n    Sec               0.203    0.036    5.599    0.000    0.717    0.717\n    Cl                0.011    0.035    0.322    0.747    0.029    0.029\n  Cl ~~                                                                 \n    Sec               0.034    0.032    1.074    0.283    0.082    0.082\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n   .SEP1              0.694    0.082    8.507    0.000    0.694    0.702\n   .SEP2              0.768    0.198    3.884    0.000    0.768    0.509\n   .SEP3              0.747    0.242    3.090    0.002    0.747    0.412\n   .SEP4              1.301    0.269    4.829    0.000    1.301    0.697\n   .SEP5              1.115    0.260    4.284    0.000    1.115    0.564\n   .RE1               0.380    0.046    8.174    0.000    0.380    0.446\n   .RE2               0.532    0.058    9.244    0.000    0.532    0.554\n   .RE3               0.661    0.073    8.999    0.000    0.661    0.663\n   .RE4               0.495    0.057    8.624    0.000    0.495    0.629\n   .RE5               0.808    0.059   13.744    0.000    0.808    0.905\n   .Eval1             0.764    0.069   11.139    0.000    0.764    0.743\n   .Eval2             0.596    0.065    9.130    0.000    0.596    0.708\n   .Eval3             0.637    0.061   10.425    0.000    0.637    0.643\n   .Eval4             0.773    0.077   10.013    0.000    0.773    0.680\n   .Eval5             0.522    0.058    9.071    0.000    0.522    0.519\n   .Cl1               0.383    0.060    6.378    0.000    0.383    0.405\n   .Cl2               0.262    0.085    3.098    0.002    0.262    0.269\n   .Cl3               0.537    0.054   10.018    0.000    0.537    0.760\n   .Cl4               0.752    0.064   11.834    0.000    0.752    0.893\n   .Sec1              0.746    0.066   11.227    0.000    0.746    0.711\n   .Sec2              0.353    0.056    6.295    0.000    0.353    0.769\n   .Sec3              0.396    0.056    7.053    0.000    0.396    0.628\n   .Sec4              0.465    0.066    7.065    0.000    0.465    0.555\n   .Sec5              0.415    0.058    7.196    0.000    0.415    0.488\n   .Math              1.258    0.124   10.105    0.000    1.258    0.834\n   .SEP               0.170    0.048    3.554    0.000    0.577    0.577\n   .RE                0.329    0.060    5.494    0.000    0.698    0.698\n    Eval              0.265    0.060    4.441    0.000    1.000    1.000\n    Cl                0.562    0.075    7.456    0.000    1.000    1.000\n    Sec               0.303    0.066    4.584    0.000    1.000    1.000\n\nDefined Parameters:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all\n    I                 0.374    0.172    2.170    0.030    0.257    0.209\n    T                 0.310    0.135    2.293    0.022    0.213    0.173"
+  },
+  {
+    "objectID": "analyse_cov.html#maximum-de-vraisemblance",
+    "href": "analyse_cov.html#maximum-de-vraisemblance",
+    "title": "Formation SEM",
+    "section": "Maximum de vraisemblance",
+    "text": "Maximum de vraisemblance\n[Jöreskog, K. G. (1967), “Some Contributions to Maximum Likelihood Factor Analysis,” Psychometrika, 32, 44]\nOn suppose que :\n\n\\((x_1,...,x_p,y_1,...,y_q)^T \\sim \\mathcal N (0,\\Sigma)\\), où \\(\\Sigma\\) est la matrice de covariance des variables \\(\\bf{x,y}\\) (sur la population).\n\\(\\Sigma\\) et \\(S\\) sont définies positives.\n\nLa première hypothèse revient à considérer que l’ensemble de l’information entre les variables impliquées est contenue dans les moments d’ordre 1 et 2 (moyennes et covariances).\nUn premier problème peut se poser si la matrice \\(S\\) n’est pas définie positive ….\nOn a : \\[F_{ML}(\\theta)=\\log|\\Sigma|+trace(S\\Sigma^{-1})-\\log|S|-(p+q),\\]\nImportant\n\n\\(F_{ML}\\) a bien les 3 propriétés attendues.\nLa solution n’est pas toujours explicite \\(\\leadsto\\) procédures algorithmiques pour le calculer.\nAsymptotiquement, \\(\\widehat \\theta_{ML}\\) est non biaisé, consistant, efficace (ie parmi les estimateurs consistants de \\(\\theta\\) il a la plus petite variance asymptotique).\nLa distribution de \\(\\widehat \\theta_{ML}\\) est normale \\(\\leadsto\\) on peut faire des tests…"
+  },
+  {
+    "objectID": "analyse_cov.html#approches-pondérées",
+    "href": "analyse_cov.html#approches-pondérées",
+    "title": "Formation SEM",
+    "section": "Approches pondérées",
+    "text": "Approches pondérées\n\\[\nF_{W}=\\frac 1{2}trace\\left( [S-\\Sigma(\\theta)]^2W^{-1}\\right),\n\\] où \\(W\\) est une matrice de poids (définie positive) pour la partie résiduelle du modèle.\n\nLorsque \\(W=I\\) il s’agit de la méthode des moindres carrés non pondérés \\(ULS\\) (cf Jöreskog (1977) “Structural Equation Models in the Social Sciences: Specification, Estimation and Testing,” in Applications of Statistics, P. R. Krishnaiah, ed. Amsterdam: North-Holland Publishing Co., 265-87) Dans ce cas l’analogie avec la régression OLS est évidente.\nLorsque \\(W=S\\) il s’agit de la méthode des moindres carrés généralisés \\(GLS\\) (cf Browne, M. W. (1974). Generalized least squares estimators in the analysis of covariance structures. South African Statistical Journal, 8, 1–24.)\n\nRemarque\nPour assurer des bonnes propriétés à \\(\\widehat \\theta_{GLS}\\) il faut ajouter quelques hypothèses, mais en pratique elles sont souvent moins restrictives que celles pour le ML.\nAutre approche : Browne, M.W. (1984), Asymptotically distribution-free methods for the analysis of covariance structures. British Journal of Mathematical and Statistical Psychology, 37: 62-83. https://doi.org/10.1111/j.2044-8317.1984.tb00789.x\n\\[\nF_{WLS}=\\frac 1{2}trace\\left( [S-\\Sigma(\\theta)]^TW^{-1}[S-\\Sigma(\\theta)]\\right),\n\\]\n\nSi on prend \\(W=S\\) qui est (sous certaines conditions) une estimation asymptotique de la matrice de covariance de la population.\nLe gros inconvenient de cette approche est qu’elle nécessite un très grand nombre d’observation (\\(n>1000\\)).\nOn peut considérer une matrice de poids diagonale (DWLS)\nPour des variables mesurées ordinales (ce qui est le cas dans la plupart des applications), sous la condition qu’elles mesurent une variable latente continue, Muthen (1984) a développé une approche dérivée de WLS basée sur la matrice de corrélations polychoriques qui montre de très bonne propriété en pratique."
+  },
+  {
+    "objectID": "analyse_cov.html#premières-vérifications",
+    "href": "analyse_cov.html#premières-vérifications",
+    "title": "Formation SEM",
+    "section": "Premières vérifications",
+    "text": "Premières vérifications\nAvant toute interprétation on peut vérifier si l’algorithme d’estimation a bien convergé en vérifiant :\n\naucune variance n’est négative,\naucune corrélation n’est supérieure à 1 (ou inférieure à \\(-1\\)),\nla matrice de covariance est non définie positive.\n\nEnsuite il exsite de très nombreux indices d’ajustements différents. On va en regarder quelques uns."
+  },
+  {
+    "objectID": "analyse_cov.html#comparaison-de-ces-approches",
+    "href": "analyse_cov.html#comparaison-de-ces-approches",
+    "title": "Formation SEM",
+    "section": "Comparaison de ces approches",
+    "text": "Comparaison de ces approches\n\nSi on considère la normalité des variables \\(\\bf{x,y}\\) ces trois approches sont asymptotiquement équivalentes.\n\nAprès plusieurs articles comparent ces approches :\nQuelques références : \n\nUlf Henning Olsson , Tron Foss , Sigurd V. Troye & Roy D. Howell (2000) The Performance of ML, GLS, and WLS Estimation in Structural Equation Modeling Under Conditions of Misspecification and Nonnormality, Structural Equation Modeling: A Multidisciplinary Journal, 7:4, 557-595, DOI: 10.1207/S15328007SEM0704_3\nLi CH. The performance of ML, DWLS, and ULS estimation with robust corrections in structural equation models with ordinal variables. Psychol Methods. 2016 Sep;21(3):369-87. doi: 10.1037/met0000093. PMID: 27571021.\n\nConclusion :\nIl existe d’autres approches MLR, FIM, …"
+  },
+  {
+    "objectID": "analyse_cov.html#test-du-chi2-jöreskog-1967",
+    "href": "analyse_cov.html#test-du-chi2-jöreskog-1967",
+    "title": "Formation SEM",
+    "section": "Test du \\(\\chi¨2\\) (Jöreskog 1967)",
+    "text": "Test du \\(\\chi¨2\\) (Jöreskog 1967)\nOn teste \\(H_0 : \\Sigma(\\theta)=\\Sigma\\) contre \\(H_1 : \\Sigma(\\theta)\\not =\\Sigma\\)\nOn teste cette hypothèse par un rapport de vraisemblance (on ramène \\(H_0\\) à \\(\\Sigma(\\hat \\theta)=S\\))\n\\[\nT=-2(\\log(L_0(\\hat\\theta))-\\log(L_1(\\hat\\theta))=(n-1)F_{ML}\n\\] Sous des conditions de régularité et avec \\(n\\) grand la statistique \\(T\\sim \\chi^2\\) à \\(k=\\frac1{2}(p+q)(p+q+1)-t\\) degré de liberté.\nLa méthode d’estimation des paramètres par maximum de vraisemblance n’est que très peu biaisée en cas de non normalité alors que la statistique \\(T\\) l’est et ce test est beaucoup trop peu conservateur.\nBollen (1986) propose une version standardisée de \\(T\\) (une loi du \\(\\chi^2\\) a pour moyenne \\(k\\) et variance \\(2k\\)) donc on considère \\(\\tilde T=\\frac{T-k}{\\sqrt{2k}}\\)\nEnfin Satorra-Bentler (1999) propose une une version de \\(T=c^{-1}T\\) où \\(c\\) est l’applatissement de la courbe (kurtosis)."
+  },
+  {
+    "objectID": "analyse_cov.html#indices-de-mesure-absolue",
+    "href": "analyse_cov.html#indices-de-mesure-absolue",
+    "title": "Formation SEM",
+    "section": "Indices de mesure absolue :",
+    "text": "Indices de mesure absolue :\nIl existe d’autres indices qui sont listés dans le tableau suivant ils ont tous leurs qualités et leurs défauts, aucun ne s’étant révélé idéal empiriquement.\n\\begin{table}[H] [1]{>{\n}m{#1}} [1]{>{}m{#1}}\n\\end{table}"
+  },
+  {
+    "objectID": "analyse_cov.html#indices-absolu-modèle-de-mesure",
+    "href": "analyse_cov.html#indices-absolu-modèle-de-mesure",
+    "title": "Formation SEM",
+    "section": "Indices absolu (modèle de mesure) :",
+    "text": "Indices absolu (modèle de mesure) :\nIl existe d’autres indices qui sont listés dans le tableau suivant ils ont tous leurs qualités et leurs défauts, aucun ne s’étant révélé idéal empiriquement."
+  },
+  {
+    "objectID": "analyse_cov.html#indices-incrémentaux-modèle-de-mesure",
+    "href": "analyse_cov.html#indices-incrémentaux-modèle-de-mesure",
+    "title": "Formation SEM",
+    "section": "Indices incrémentaux (modèle de mesure) :",
+    "text": "Indices incrémentaux (modèle de mesure) :\nOn va comparer le modèle estimé au modèle “nul” c’est à dire au modèle qui suppose la non-corrélation de toutes les variables observées et des variables latentes associées (on notera \\(T_0\\) la statistique associée à ce modèle). Un indice dit “incrémental” mesure l’amélioration de l’ajustement entre le modèle nul et le modèle testé. Là-encore il existe beaucoup d’indices"
+  },
+  {
+    "objectID": "analyse_cov.html#indices-de-parcimonie",
+    "href": "analyse_cov.html#indices-de-parcimonie",
+    "title": "Formation SEM",
+    "section": "Indices de parcimonie",
+    "text": "Indices de parcimonie\nLes questions de sur-estimation et sous-estimation de modèles doivent être posées, le cas le plus fréquent est la sur-estimation du modèle qui induira une augmentation artificielle de l’ajustement du modèle aux données. Ils permettent en particulier de trouver un juste milieu entre deux buts opposés : minimiser le nombre de coefficients à estimer et d’autre part améliorer la qualité d’ajustement du modèle aux données. Ces indices sont des indices de comparaisons de plusieurs modèles concurrents, on utilise par exemple les indices \\(AIC,BIC\\)."
+  }
+]
