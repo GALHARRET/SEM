@@ -185,6 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#modèle-de-médiation-version-2" id="toc-modèle-de-médiation-version-2" class="nav-link" data-scroll-target="#modèle-de-médiation-version-2">Modèle de médiation (version 2)</a>
   <ul class="collapse">
   <li><a href="#matrice-de-corrélation-du-modèle-1" id="toc-matrice-de-corrélation-du-modèle-1" class="nav-link" data-scroll-target="#matrice-de-corrélation-du-modèle-1">Matrice de corrélation du modèle</a></li>
+  <li><a href="#test-du-chi2" id="toc-test-du-chi2" class="nav-link" data-scroll-target="#test-du-chi2">Test du <span class="math inline">\(\chi^2\)</span> :</a></li>
   </ul></li>
   <li><a href="#retour-au-modèle-général" id="toc-retour-au-modèle-général" class="nav-link" data-scroll-target="#retour-au-modèle-général">Retour au modèle général</a></li>
   <li><a href="#formule-de-jorëskog" id="toc-formule-de-jorëskog" class="nav-link" data-scroll-target="#formule-de-jorëskog">Formule de Jorëskog</a></li>
@@ -295,7 +296,7 @@ S=\left( \begin{array}{ccc}
 <section id="approche-par-moindres-carrés" class="level2">
 <h2 class="anchored" data-anchor-id="approche-par-moindres-carrés">Approche par moindres carrés</h2>
 <p>En analyse de régression on veut minimiser la somme des carrés écarts des points du nuage aux valeurs prédites (OLS : Ordinary Least Squared) ici on veut minimiser :</p>
-<p><span class="math display">\[F_{ULS}=\frac1{2}\Vert \Sigma-S\Vert^2,\]</span> où <span class="math inline">\(\Vert&nbsp;\bullet \Vert\)</span> est la norme de Frobenius. Cette estimation s’appelle ULS (Unweighted Least Squared)</p>
+<p><span class="math display">\[F_{ULS}=\frac1{2}\Vert \Sigma-S\Vert^2=trace[(\Sigma-S)^T.(\Sigma-S)],\]</span> cette estimation s’appelle ULS (Unweighted Least Squared).</p>
 <p><strong>Remarque</strong> : Les estimateurs des moindres carrés et du maximum de vraisemblance coïncident dans le cas de la régression ce n’est pas le cas avec les matrices de covariance (il faudra pondérer par une matrice <span class="math inline">\(W\)</span>).</p>
 </section>
 <section id="exemple-sur-lavaan" class="level2">
@@ -363,12 +364,12 @@ Defined Parameters:
     T                 4.700    0.243   19.381    0.000</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrice de covariance observée</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(df)<span class="sc">*</span>(n<span class="dv">-1</span>)<span class="sc">/</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         M         Y        X
-M 2.148846  7.652921 1.238055
-Y 7.652921 35.697306 5.998395
-X 1.238055  5.998395 1.276278</code></pre>
+M 2.127358  7.576392 1.225675
+Y 7.576392 35.340333 5.938411
+X 1.225675  5.938411 1.263516</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrice de covariance estimée avec le modèle</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fitted</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -460,12 +461,12 @@ Defined Parameters:
     I                 3.455    0.362    9.539    0.000</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrice de covariance observée</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(df)<span class="sc">*</span>(n<span class="dv">-1</span>)<span class="sc">/</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         M         Y        X
-M 2.148846  7.652921 1.238055
-Y 7.652921 35.697306 5.998395
-X 1.238055  5.998395 1.276278</code></pre>
+M 2.127358  7.576392 1.225675
+Y 7.576392 35.340333 5.938411
+X 1.225675  5.938411 1.263516</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrice de covariance estimée avec le modèle</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fitted</span>(res2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -478,6 +479,23 @@ X  1.226  4.365  1.264</code></pre>
 </div>
 </div>
 <p>Dans ca cas on voit que l’on estime beaucoup moins bien la covariance <span class="math inline">\(X,Y\)</span>. C’était attendu puisqu”il n’y a plus de path entre <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> alors que <span class="math inline">\(c=3\)</span> !</p>
+</section>
+<section id="test-du-chi2" class="level2">
+<h2 class="anchored" data-anchor-id="test-du-chi2">Test du <span class="math inline">\(\chi^2\)</span> :</h2>
+<p>On considère la matrice des résidus et en faisant la somme des carrés on obtient une loi du <span class="math inline">\(\chi^2\)</span> (somme de variables normales indépendantes). Pour trouver la statistique du test il faudra normaliser cette valeur (diviser par SE).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(res2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$type
+[1] "raw"
+
+$cov
+      M     Y     X
+M 0.000            
+Y 0.000 0.000      
+X 0.000 1.573 0.000</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="retour-au-modèle-général" class="level1">
@@ -507,7 +525,7 @@ X  1.226  4.365  1.264</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="analyse_cov_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="analyse_cov_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -521,7 +539,7 @@ X  1.226  4.365  1.264</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="analyse_cov_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="analyse_cov_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -538,7 +556,7 @@ c &amp; 0 &amp; 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="analyse_cov_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="analyse_cov_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -579,7 +597,7 @@ t &lt; \frac{(p+q)(p+q+1)}{2}
 <section id="approches-pondérées" class="level2">
 <h2 class="anchored" data-anchor-id="approches-pondérées">Approches pondérées</h2>
 <p><span class="math display">\[
-F_{W}=\frac 1{2}trace\left( [S-\Sigma(\theta)]^2W^{-1}\right),
+F_{W}=\frac 1{2}trace\left( [S-\Sigma(\theta)]^T.[S-\Sigma(\theta)].W^{-1}\right),
 \]</span> où <span class="math inline">\(W\)</span> est une matrice de poids (définie positive) pour la partie résiduelle du modèle.</p>
 <ul>
 <li><p>Lorsque <span class="math inline">\(W=I\)</span> il s’agit de la méthode des moindres carrés non pondérés <span class="math inline">\(ULS\)</span> (cf Jöreskog (1977) “Structural Equation Models in the Social Sciences: Specification, Estimation and Testing,” in Applications of Statistics, P. R. Krishnaiah, ed.&nbsp;Amsterdam: North-Holland Publishing Co., 265-87) Dans ce cas l’analogie avec la régression OLS est évidente.</p></li>
