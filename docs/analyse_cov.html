@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#test-du-chi2" id="toc-test-du-chi2" class="nav-link" data-scroll-target="#test-du-chi2">Test du <span class="math inline">\(\chi^2\)</span> :</a></li>
   </ul></li>
   <li><a href="#retour-au-modèle-général" id="toc-retour-au-modèle-général" class="nav-link" data-scroll-target="#retour-au-modèle-général">Retour au modèle général</a></li>
-  <li><a href="#formule-de-jorëskog" id="toc-formule-de-jorëskog" class="nav-link" data-scroll-target="#formule-de-jorëskog">Formule de Jorëskog</a></li>
+  <li><a href="#formule-de-jöreskog" id="toc-formule-de-jöreskog" class="nav-link" data-scroll-target="#formule-de-jöreskog">Formule de Jöreskog</a></li>
   <li><a href="#modèles-récursifs" id="toc-modèles-récursifs" class="nav-link" data-scroll-target="#modèles-récursifs">Modèles récursifs</a>
   <ul class="collapse">
   <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
@@ -180,9 +180,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mesure-de-qualité-du-modèle" id="toc-mesure-de-qualité-du-modèle" class="nav-link" data-scroll-target="#mesure-de-qualité-du-modèle">Mesure de qualité du modèle</a>
   <ul class="collapse">
   <li><a href="#premières-vérifications" id="toc-premières-vérifications" class="nav-link" data-scroll-target="#premières-vérifications">Premières vérifications</a></li>
-  <li><a href="#test-du-chi2-jöreskog-1967" id="toc-test-du-chi2-jöreskog-1967" class="nav-link" data-scroll-target="#test-du-chi2-jöreskog-1967">Test du <span class="math inline">\(\chi¨2\)</span> (Jöreskog 1967)</a>
+  <li><a href="#test-du-chi2-jöreskog-1967" id="toc-test-du-chi2-jöreskog-1967" class="nav-link" data-scroll-target="#test-du-chi2-jöreskog-1967">Test du <span class="math inline">\(\chi^2\)</span> (Jöreskog 1967)</a>
   <ul class="collapse">
-  <li><a href="#références-1" id="toc-références-1" class="nav-link" data-scroll-target="#références-1">références</a></li>
+  <li><a href="#références-1" id="toc-références-1" class="nav-link" data-scroll-target="#références-1">Références</a></li>
   </ul></li>
   <li><a href="#indices-absolu-modèle-de-mesure" id="toc-indices-absolu-modèle-de-mesure" class="nav-link" data-scroll-target="#indices-absolu-modèle-de-mesure">Indices absolu (modèle de mesure) :</a></li>
   <li><a href="#indices-incrémentaux-modèle-de-mesure" id="toc-indices-incrémentaux-modèle-de-mesure" class="nav-link" data-scroll-target="#indices-incrémentaux-modèle-de-mesure">Indices incrémentaux (modèle de mesure) :</a></li>
@@ -266,7 +266,8 @@ S=\left( \begin{array}{ccc}
 &amp;  &amp; 1
 \end{array}
 \right)
-\]</span> On a donc 5 paramètres à estimer avec 5 observations. L’ajustement va donc être parfait (aux erreurs numériques près) !</p>
+\]</span></p>
+<p>On a donc 5 paramètres à estimer avec 5 observations. L’ajustement va donc être parfait (aux erreurs numériques près) !</p>
 </section>
 <section id="approche-par-moindres-carrés" class="level2">
 <h2 class="anchored" data-anchor-id="approche-par-moindres-carrés">Approche par moindres carrés</h2>
@@ -484,8 +485,8 @@ X 0.000 1.573 0.000</code></pre>
 <p>On écrit :</p>
 <p><span class="math display">\[\eta_{(p\times 1)}= \Gamma_{(p\times q)}\xi_{(p\times q)}+ {\bf B}_{(p\times p)}\eta_{(p\times q)}+ \zeta_{(p\times 1)}\]</span></p>
 </section>
-<section id="formule-de-jorëskog" class="level1">
-<h1>Formule de Jorëskog</h1>
+<section id="formule-de-jöreskog" class="level1">
+<h1>Formule de Jöreskog</h1>
 <p>On considère les matrices de corrélation des variables exogènes et des erreurs <span class="math display">\[\Phi=\mathbb E(\xi\xi^T), \quad \Psi=\mathbb E(\zeta\zeta^T) \]</span></p>
 <p><span class="math display">\[\boxed{\Sigma(\theta)=\left( \begin{array}{cc}
 \Phi &amp; \Phi \Gamma^T\widetilde B^T \\
@@ -547,7 +548,7 @@ c &amp; 0 &amp; 0
 <p>B. <span class="math inline">\(F(S,\Sigma(\theta))= 0\)</span> si et seulement si <span class="math inline">\(S= \Sigma(\theta))\)</span></p>
 <p>C. <span class="math inline">\(F\)</span> est continue en <span class="math inline">\(S\)</span> et en <span class="math inline">\(\Sigma(\theta).\)</span></p>
 <p><strong>Remarque :</strong></p>
-<p>Le nombre de paramètres <span class="math inline">\(t\)</span> à estimer peut être grand il doit de toute façon vérifier ` <span class="math display">\[
+<p>Le nombre de paramètres <span class="math inline">\(t\)</span> à estimer peut être grand il doit de toute façon vérifier <span class="math display">\[
 t &lt; \frac{(p+q)(p+q+1)}{2}
 \]</span></p>
 <section id="maximum-de-vraisemblance" class="level2">
@@ -618,7 +619,7 @@ F_{WLS}=\frac 1{2}trace\left( [S-\Sigma(\theta)]^TW^{-1}[S-\Sigma(\theta)]\right
 <p>Ensuite il exsite de très nombreux indices d’ajustements différents. On va en regarder quelques uns.</p>
 </section>
 <section id="test-du-chi2-jöreskog-1967" class="level2">
-<h2 class="anchored" data-anchor-id="test-du-chi2-jöreskog-1967">Test du <span class="math inline">\(\chi¨2\)</span> (Jöreskog 1967)</h2>
+<h2 class="anchored" data-anchor-id="test-du-chi2-jöreskog-1967">Test du <span class="math inline">\(\chi^2\)</span> (Jöreskog 1967)</h2>
 <p>On teste <span class="math inline">\(H_0 : \Sigma(\theta)=\Sigma\)</span> contre <span class="math inline">\(H_1 : \Sigma(\theta)\not =\Sigma\)</span></p>
 <p>On teste cette hypothèse par un rapport de vraisemblance (on ramène <span class="math inline">\(H_0\)</span> à <span class="math inline">\(\Sigma(\hat \theta)=S\)</span>)</p>
 <p><span class="math display">\[
@@ -628,7 +629,7 @@ T=-2(\log(L_0(\hat\theta))-\log(L_1(\hat\theta))=(n-1)F_{ML}
 <p>Bollen (1986) propose une version standardisée de <span class="math inline">\(T\)</span> (une loi du <span class="math inline">\(\chi^2\)</span> a pour moyenne <span class="math inline">\(k\)</span> et variance <span class="math inline">\(2k\)</span>) donc on considère <span class="math inline">\(\tilde T=\frac{T-k}{\sqrt{2k}}\)</span></p>
 <p>Enfin Satorra-Bentler (1999) propose une une version de <span class="math inline">\(T=c^{-1}T\)</span> où <span class="math inline">\(c\)</span> est l’applatissement de la courbe (kurtosis).</p>
 <section id="références-1" class="level3">
-<h3 class="anchored" data-anchor-id="références-1">références</h3>
+<h3 class="anchored" data-anchor-id="références-1">Références</h3>
 <ul>
 <li><p>Bollen, K., 1986. Sample size and Bentler and Bonett’s nonnormed fit index. Psychometrika 51(3), 375–377. 32</p></li>
 <li><p>Satorra, A., Bentler, P.M., 1999. Corrections to test statistics and standard errors in covariance struc- ture analysis. In : Von Eye, A., Clogg, C. (Eds.), Latent Variables Analysis, Applications to Deve- lopmental Research. Thousand Oaks, Ca, Sage, pp.&nbsp;399–419. 32, 36</p></li>
